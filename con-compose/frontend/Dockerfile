@@ -6,5 +6,4 @@ RUN rm -rf /var/www/html/*
 COPY src /var/www/html
 EXPOSE 80
 RUN mkdir /etc/apache2/logs && mkdir /etc/apache2/locks
-COPY /server /etc/apache2/
-CMD apache2 -DFOREGROUND
+CMD apachectl start &
