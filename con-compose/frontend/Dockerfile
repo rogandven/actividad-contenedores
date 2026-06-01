@@ -18,8 +18,7 @@ RUN apt install ./sybase.deb -y
 RUN pecl install sqlsrv-5.11.0
 RUN pecl install pdo_sqlsrv-5.11.0
 
-RUN (cat /usr/local/etc/php/php.ini && printf "; priority=20\nextension=sqlsrv.so\n") > /usr/local/etc/php/php.ini
-RUN (cat /usr/local/etc/php/php.ini && printf "; priority=30\nextension=pdo_sqlsrv.so\n") > /usr/local/etc/php/php.ini
+RUN (cat /usr/local/etc/php/php.ini && echo "; priority=30\nextension=pdo_sqlsrv.so\n; priority=20\nextension=sqlsrv.so\n") > /usr/local/etc/php/php.ini
 
 RUN phpenmod -v 8.2 sqlsrv pdo_sqlsrv
 
