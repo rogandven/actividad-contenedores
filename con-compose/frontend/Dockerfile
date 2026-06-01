@@ -1,11 +1,11 @@
-FROM debian:13
+# docker build -t intranet-frontend
+# docker run -d --name intranet-frontend intranet-frontend 
+
+FROM php:8.2-apache-trixie
 USER root
+
 RUN apt update && apt upgrade -y && apt autoremove -y
-RUN apt install apache2 libapache2-mod-php8.4 php8.4 -y
 
 RUN rm -rf /var/www/html/*
 COPY src /var/www/html
-EXPOSE 80
-
-ENTRYPOINT ["tail"]
-CMD ["-f","/dev/null"]
+EXPOSE 80 443
